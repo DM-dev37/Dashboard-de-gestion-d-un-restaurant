@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Sidebar from "./Sidebar";
 import { Clock, Menu, Utensils, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 
 function Dashboard() {
   const [isSidebar, setIsSidebar] = useState(true);
@@ -64,6 +65,9 @@ function Dashboard() {
               <Clock className="size-5" />
               Ouvrir le restaurant
             </Button>
+            <Avatar style={{ cursor: "pointer" }}>
+              <AvatarFallback>CH</AvatarFallback>
+            </Avatar>
           </div>
         </header>
       </div>
