@@ -25,6 +25,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import RevenueChart from "./RevenueChart";
+import PlatPop from "./PlatPop";
 
 function Dashboard() {
   const [isSidebar, setIsSidebar] = useState(true);
@@ -168,7 +169,31 @@ function Dashboard() {
                       Top 5 des plats les plus commandes aujourd'hui
                     </CardDescription>
                   </CardHeader>
-                  <CardContent></CardContent>
+                  <CardContent>
+                    <div className="space-y-4">
+                      <PlatPop
+                        name={"risoto au truffes"}
+                        orders={40}
+                        percentage={85}
+                      />
+                      <PlatPop
+                        name={"Fillet mignon"}
+                        orders={38}
+                        percentage={76}
+                      />
+                      <PlatPop
+                        name={"Raumon grille"}
+                        orders={31}
+                        percentage={62}
+                      />
+                      <PlatPop
+                        name={"Patte carbonaras"}
+                        orders={27}
+                        percentage={54}
+                      />
+                      <PlatPop name={"Tiramussi"} orders={23} percentage={46} />
+                    </div>
+                  </CardContent>
                 </Card>
               </div>
             </TabsContent>
