@@ -1,5 +1,12 @@
 import React from "react";
-import { BarChart, ResponsiveContainer, XAxis, YAxis } from "recharts";
+import {
+  Bar,
+  BarChart,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from "recharts";
 
 function RevenueChart() {
   const data = [
@@ -29,7 +36,29 @@ function RevenueChart() {
           tickLine={false}
           tickFormatter={formatEuro}
         />
+        <Tooltip
+          formatter={formatEuro}
+          cursor={{ fill: "rgba(245,148,11,0.1)" }}
+          contentStyle={{
+            borderRadius: "8px",
+            border: "1px solid #f59e0b",
+            boxShadow: "0 4px 12px rgba(245,158,11,0.15)",
+            background: "rgba(255,255,255,0.95)",
+          }}
+        />
       </BarChart>
+      <Bar
+        dataKey={"total"}
+        radius={[6, 6, 6, 0]}
+        fill="url(#colorGradient)"
+        className="fill-primary"
+      />
+      <defs>
+        <linearGradient id="colorGradient" x1={0} y1={0} x2={0} y2={1}>
+          <stop offset={"0%"} stopColor="#f97316" stopOpacity={1} />
+          <stop offset={"100%"} stopColor="#f59e0b" stopOpacity={0.8} />
+        </linearGradient>
+      </defs>
     </ResponsiveContainer>
   );
 }
