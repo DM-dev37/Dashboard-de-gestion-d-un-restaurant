@@ -1,10 +1,22 @@
+/* eslint-disable react/no-unescaped-entities */
 "use client";
 
 import React, { useState } from "react";
 import Sidebar from "./Sidebar";
-import { Clock, Menu, Utensils, X } from "lucide-react";
+import {
+  Calendar,
+  Clock,
+  DollarSign,
+  Menu,
+  ShoppingBag,
+  Users,
+  Utensils,
+  X,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import StastCard from "./StastCard";
 
 function Dashboard() {
   const [isSidebar, setIsSidebar] = useState(true);
@@ -70,6 +82,66 @@ function Dashboard() {
             </Avatar>
           </div>
         </header>
+
+        {/* contenu du tabkeau de bord */}
+        <main className="p-4">
+          <div className="mb-8">
+            <h1 className="text-2xl font-bold md:text-3xl tracking-tight">
+              Tableau de bord
+            </h1>
+            <p className="text-muted-foreground">
+              Bienvenue chef! Voici l'apercu de votre restaurant aujourd'hui.
+            </p>
+          </div>
+
+          {/* onglets de nav ou de tabs */}
+          <Tabs defaultValue="overview" className="space-y-6">
+            <div className="flex items-center justify-between">
+              <TabsList>
+                <TabsTrigger value="overview">Vue d'ensemble</TabsTrigger>
+                <TabsTrigger value="livre">Commandes</TabsTrigger>
+                <TabsTrigger value="reserve">Reservations</TabsTrigger>
+                <TabsTrigger value="staff">Personnels</TabsTrigger>
+              </TabsList>
+
+              <div className="hidden md:flex items-center gap-2">
+                <Button variant={"outline"} size={"sm"}>
+                  <Calendar className="size-5 mr-2" />
+                  Aujourd'hui
+                </Button>
+              </div>
+            </div>
+
+            <TabsContent value="overview" className="space-y-6">
+              <div className="grid gap-2 md:grid-cols-2 lg:grid-cols-4">
+                <StastCard
+                  title={"Chiffre d'affaire"}
+                  value={"2,850 $"}
+                  description={"+18% par rapprt a hier"}
+                  icon={<DollarSign className="size-5 text-emerald-500" />}
+                />
+                <StastCard
+                  title={"Commandes"}
+                  value={"115"}
+                  description={"+24% par rapprt a hier"}
+                  icon={<ShoppingBag className="size-5 text-blue-500" />}
+                />
+                <StastCard
+                  title={"Clients"}
+                  value={"289"}
+                  description={"+12% par rapprt a hier"}
+                  icon={<Users className="size-5 text-indigo-500" />}
+                />
+                <StastCard
+                  title={"Reservions"}
+                  value={"32"}
+                  description={"+8% par rapprt a hier"}
+                  icon={<Calendar className="size-5 text-amber-500" />}
+                />
+              </div>
+            </TabsContent>
+          </Tabs>
+        </main>
       </div>
     </div>
   );
