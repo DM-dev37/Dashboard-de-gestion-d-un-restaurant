@@ -26,6 +26,7 @@ import {
 } from "@/components/ui/card";
 import RevenueChart from "./RevenueChart";
 import PlatPop from "./PlatPop";
+import OrderTable from "./OrderTable";
 
 function Dashboard() {
   const [isSidebar, setIsSidebar] = useState(true);
@@ -198,7 +199,15 @@ function Dashboard() {
               </div>
 
               <div className="grid gap-4 md:grid-cols-7">
-                <Card className="md:col-span-4"></Card>
+                <Card className="md:col-span-4">
+                  <CardHeader>
+                    <CardTitle>Commandes recentes</CardTitle>
+                    <CardDescription>Les 5 dernieres commandes</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <OrderTable />
+                  </CardContent>
+                </Card>
                 <Card className="md:col-span-3"></Card>
               </div>
             </TabsContent>
