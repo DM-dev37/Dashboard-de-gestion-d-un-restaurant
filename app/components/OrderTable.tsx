@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
   Select,
@@ -6,6 +7,14 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import {
+  Table,
+  TableBody,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+import { ArrowUpDown } from "lucide-react";
 import React, { useState } from "react";
 
 function OrderTable({ limit }: { limit?: string }) {
@@ -102,6 +111,28 @@ function OrderTable({ limit }: { limit?: string }) {
           </Select>
         </div>
       )}
+
+      <div className="rounded-md border">
+        <Table>
+          <TableHeader>
+            <TableRow>
+              <TableHead className="w[100px]">
+                <Button variant={"ghost"} className="p-0 font-medium">
+                  ID <ArrowUpDown className="size-4 ml-2" />
+                </Button>
+              </TableHead>
+              <TableHead>Clients</TableHead>
+              <TableHead>Articles</TableHead>
+              <TableHead>Totals</TableHead>
+              <TableHead>Statuts</TableHead>
+              <TableHead>Heures</TableHead>
+              <TableHead>Serveur</TableHead>
+              <TableHead>Actions</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody></TableBody>
+        </Table>
+      </div>
     </div>
   );
 }

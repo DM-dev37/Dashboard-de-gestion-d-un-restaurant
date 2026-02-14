@@ -205,7 +205,7 @@ function Dashboard() {
                     <CardDescription>Les 5 dernieres commandes</CardDescription>
                   </CardHeader>
                   <CardContent>
-                    <OrderTable />
+                    <OrderTable limit={5} />
                   </CardContent>
                 </Card>
                 <Card className="md:col-span-3"></Card>
