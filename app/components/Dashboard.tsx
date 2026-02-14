@@ -160,6 +160,16 @@ function Dashboard() {
                     <RevenueChart />
                   </CardContent>
                 </Card>
+
+                <Card className="md:col-span-3">
+                  <CardHeader>
+                    <CardTitle>Plats Populaires</CardTitle>
+                    <CardDescription>
+                      Top 5 des plats les plus commandes aujourd'hui
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent></CardContent>
+                </Card>
               </div>
             </TabsContent>
           </Tabs>
