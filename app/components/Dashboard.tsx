@@ -17,6 +17,14 @@ import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import StastCard from "./StastCard";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import RevenueChart from "./RevenueChart";
 
 function Dashboard() {
   const [isSidebar, setIsSidebar] = useState(true);
@@ -138,6 +146,20 @@ function Dashboard() {
                   description={"+8% par rapprt a hier"}
                   icon={<Calendar className="size-5 text-amber-500" />}
                 />
+              </div>
+
+              <div className="grid gap-4 md:grid-cols-7">
+                <Card className="md:col-span-4">
+                  <CardHeader>
+                    <CardTitle>Revenus</CardTitle>
+                    <CardDescription>
+                      Revenus journaliers des 7 derniers jours
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <RevenueChart />
+                  </CardContent>
+                </Card>
               </div>
             </TabsContent>
           </Tabs>
