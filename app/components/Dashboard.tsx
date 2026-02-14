@@ -196,6 +196,11 @@ function Dashboard() {
                   </CardContent>
                 </Card>
               </div>
+
+              <div className="grid gap-4 md:grid-cols-7">
+                <Card className="md:col-span-4"></Card>
+                <Card className="md:col-span-3"></Card>
+              </div>
             </TabsContent>
           </Tabs>
         </main>

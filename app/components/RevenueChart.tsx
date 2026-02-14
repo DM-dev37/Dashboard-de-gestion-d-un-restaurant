@@ -19,7 +19,7 @@ function RevenueChart() {
     { name: "Dim", total: 2850 }, // Dimanche : 2850€
   ];
 
-  const formatEuro = (value: number) => value + "$";
+  const formatEuro = (value: number) => value + "€";
   return (
     <ResponsiveContainer width={"100%"} height={300}>
       <BarChart data={data}>
@@ -31,7 +31,7 @@ function RevenueChart() {
           axisLine={false}
         />
         <YAxis
-          stroke="#88888"
+          stroke="#888888"
           fontSize={12}
           tickLine={false}
           tickFormatter={formatEuro}
@@ -46,19 +46,20 @@ function RevenueChart() {
             background: "rgba(255,255,255,0.95)",
           }}
         />
+
+        <Bar
+          dataKey={"total"}
+          radius={[6, 6, 6, 0]}
+          fill="url(#colorGradient)"
+          className="fill-amber-400"
+        />
+        <defs>
+          <linearGradient id="colorGradient" x1={0} y1={0} x2={0} y2={1}>
+            <stop offset={"0%"} stopColor="#f97316" stopOpacity={1} />
+            <stop offset={"100%"} stopColor="#f59e0b" stopOpacity={0.8} />
+          </linearGradient>
+        </defs>
       </BarChart>
-      <Bar
-        dataKey={"total"}
-        radius={[6, 6, 6, 0]}
-        fill="url(#colorGradient)"
-        className="fill-primary"
-      />
-      <defs>
-        <linearGradient id="colorGradient" x1={0} y1={0} x2={0} y2={1}>
-          <stop offset={"0%"} stopColor="#f97316" stopOpacity={1} />
-          <stop offset={"100%"} stopColor="#f59e0b" stopOpacity={0.8} />
-        </linearGradient>
-      </defs>
     </ResponsiveContainer>
   );
 }
