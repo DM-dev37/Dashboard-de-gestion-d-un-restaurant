@@ -205,6 +205,7 @@ function Dashboard() {
                     <CardDescription>Les 5 dernieres commandes</CardDescription>
                   </CardHeader>
                   <CardContent>
+                    {/* le limite permet de faire apparaitre la barre de recherche mais a une condition */}
                     <OrderTable limit={5} />
                   </CardContent>
                 </Card>

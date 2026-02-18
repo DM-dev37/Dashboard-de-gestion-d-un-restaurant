@@ -1,4 +1,6 @@
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { DropdownMenu } from "@/components/ui/dropdown-menu";
 import { Input } from "@/components/ui/input";
 import {
   Select,
@@ -10,16 +12,68 @@ import {
 import {
   Table,
   TableBody,
+  TableCell,
   TableHead,
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { ArrowUpDown } from "lucide-react";
-import React, { useState } from "react";
+import { ArrowUpDown, Check, Clock, X } from "lucide-react";
+import React, { useMemo, useState } from "react";
 
 function OrderTable({ limit }: { limit?: string }) {
   const [search, setSearch] = useState("");
   const [statusFilter, setStatusFilter] = useState("all");
+
+  const filterdOrders = useMemo(() =>{
+    return ordersData
+    .filter((order) =>{
+        if(search) {
+            const searchLower = search.toLowerCase();
+            return (
+                order.id.toLowerCase().includes(searchLower) ||
+                order.customer.toLowerCase().includes(searchLower) ||
+                order.items.some(item => item.name.toLowerCase().includes(searchLower))
+            )
+        }
+        return true;
+    })
+    .filter(order =>{
+        if(statusFilter === "all") return true;
+        return order.status === statusFilter
+    })
+    .slice(0,limit || ordersData.length)
+  }, [search, statusFilter, limit]);
+
+  const getStatusBadge = (status: string) => {
+    switch (status) {
+        case "complited":
+            return (
+                <Badge className= "bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-600 shadow-sm" >
+                    <Check className="mr-1 size-3"/> en attente
+                </Badge>
+            )
+        case "in-progress":
+            return (
+                <Badge className= "bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-600 shadow-sm" >
+                    <Clock className="mr-1 size-3"/> en attente
+                </Badge>
+            )
+        case "pending":
+            return (
+                <Badge variant={"outline"} className= "bg-amber-50 text-amber-500 dark:bg-amber-950 shadow-sm" >
+                     en attente
+                </Badge>
+            )
+        case "cancelled":
+            return (
+                <Badge variant={"destructive"} className= "" >
+                    <X className="mr-1 size-3"/> annulee
+                </Badge>
+            )
+        default:
+            return null       
+    }
+  }
 
   const ordersData = [
     {
@@ -130,7 +184,28 @@ function OrderTable({ limit }: { limit?: string }) {
               <TableHead>Actions</TableHead>
             </TableRow>
           </TableHeader>
-          <TableBody></TableBody>
+          <TableBody>
+            {filterdOrders.length > 0 ? (
+                filterdOrders.map( order => (
+                    <TableRow key={order.id}>
+                        <TableCell className="font-medium">{order.id}</TableCell>
+                        <TableCell >{order.customer}</TableCell>
+                        <TableCell className="flex flex-col gap-1">{order.items.map((item, index) => (
+                            <div key={index} className="text-sm">
+                                {item.name} * {item.quantity}
+                            </div>
+                        ))}</TableCell>
+                        <TableCell >{order.total}</TableCell>
+                        <TableCell >{getStatusBadge(order.status)}</TableCell>
+                        <TableCell >{(order.time)}</TableCell>
+                        <TableCell >{(order.waiter)}</TableCell>
+                        <TableCell className="text-right">
+                            <DropdownMenu></DropdownMenu>
+                        </TableCell>
+                    </TableRow>
+                ))
+            ) }
+          </TableBody>
         </Table>
       </div>
     </div>
