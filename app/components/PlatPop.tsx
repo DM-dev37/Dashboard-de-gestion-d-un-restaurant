@@ -14,7 +14,7 @@ function PlatPop({ name, percentage, orders }) {
       </div>
       <Progress
         value={percentage}
-        className="h-2 bg-amber-100 [&>div]:bg-gradient-to-r [&>div]:from-amber-300 [&>div]:to-amber-700"
+        className="h-2 bg-amber-100 [&>div]:bg-gradient-to-r [&>div]:from-amber-200 [&>div]:to-amber-500"
       />
     </div>
   );

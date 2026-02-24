@@ -206,10 +206,20 @@ function Dashboard() {
                   </CardHeader>
                   <CardContent>
                     {/* le limite permet de faire apparaitre la barre de recherche mais a une condition */}
-                    <OrderTable />
+                    <OrderTable limit={5} />
                   </CardContent>
                 </Card>
-                <Card className="md:col-span-3"></Card>
+                <Card className="md:col-span-3">
+                  <CardHeader>
+                    <CardTitle>Occupation des tables</CardTitle>
+                    <CardDescription>
+                      Etat actuel des tables du restorant
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="grid grid-col-3"></div>
+                  </CardContent>
+                </Card>
               </div>
             </TabsContent>
           </Tabs>
