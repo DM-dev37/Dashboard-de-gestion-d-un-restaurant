@@ -206,7 +206,7 @@ function Dashboard() {
                   </CardHeader>
                   <CardContent>
                     {/* le limite permet de faire apparaitre la barre de recherche mais a une condition */}
-                    <OrderTable limit={5} />
+                    <OrderTable />
                   </CardContent>
                 </Card>
                 <Card className="md:col-span-3"></Card>
