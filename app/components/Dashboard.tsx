@@ -27,6 +27,7 @@ import {
 import RevenueChart from "./RevenueChart";
 import PlatPop from "./PlatPop";
 import OrderTable from "./OrderTable";
+import StatusTable from "./StatusTable";
 
 function Dashboard() {
   const [isSidebar, setIsSidebar] = useState(true);
@@ -206,7 +207,7 @@ function Dashboard() {
                   </CardHeader>
                   <CardContent>
                     {/* le limite permet de faire apparaitre la barre de recherche mais a une condition */}
-                    <OrderTable limit={5} />
+                    <OrderTable limit={"5"} />
                   </CardContent>
                 </Card>
                 <Card className="md:col-span-3">
@@ -217,7 +218,45 @@ function Dashboard() {
                     </CardDescription>
                   </CardHeader>
                   <CardContent>
-                    <div className="grid grid-col-3"></div>
+                    <div className="grid grid-cols-3 gap-2">
+                      <StatusTable
+                        number={1}
+                        status={"occupied"}
+                        time={"19:30"}
+                      />
+                      <StatusTable
+                        number={2}
+                        status={"available"}
+                        time={"10:30"}
+                      />
+                      <StatusTable
+                        number={3}
+                        status={"occupied"}
+                        time={"20:30"}
+                      />
+                      <StatusTable
+                        number={4}
+                        status={"reserved"}
+                        time={"9:30"}
+                      />
+                      <StatusTable number={5} status={"occupied"} />
+                      <StatusTable
+                        number={6}
+                        status={"occupied"}
+                        time={"15:30"}
+                      />
+                      <StatusTable number={7} status={"reserved"} />
+                      <StatusTable
+                        number={8}
+                        status={"available"}
+                        time={"13:30"}
+                      />
+                      <StatusTable
+                        number={9}
+                        status={"occupied"}
+                        time={"18:30"}
+                      />
+                    </div>
                   </CardContent>
                 </Card>
               </div>
