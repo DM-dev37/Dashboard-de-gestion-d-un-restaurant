@@ -94,7 +94,7 @@ function Dashboard() {
           </div>
         </header>
 
-        {/* contenu du tabkeau de bord */}
+        {/* contenu du tableau de bord */}
         <main className="p-4">
           <div className="mb-8">
             <h1 className="text-2xl font-bold md:text-3xl tracking-tight">
@@ -260,6 +260,21 @@ function Dashboard() {
                   </CardContent>
                 </Card>
               </div>
+            </TabsContent>
+
+            {/* contenu de l'onglet commande */}
+            <TabsContent value="orders">
+              <Card>
+                <CardHeader>
+                  <CardTitle>Tous les commandes</CardTitle>
+                  <CardDescription>
+                    Gerer les commandes en cours et passee
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <OrderTable />
+                </CardContent>
+              </Card>
             </TabsContent>
           </Tabs>
         </main>
